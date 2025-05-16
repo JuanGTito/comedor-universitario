@@ -1,0 +1,147 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    background-color: #002f9e;
+    color: white;
+    height: 100vh;
+    padding: 20px 0;
+    position: fixed;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.sidebar li:hover,
+.sidebar li.active {
+    background-color: #1c45b0;
+}
+
+.main-content {
+    margin-left: 220px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.user-menu {
+    position: relative;
+    cursor: pointer;
+    margin-left: auto; /* Empuja al extremo derecho */
+}
+
+.user-menu i {
+    font-size: 24px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    min-width: 150px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 8px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.dropdown ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.content {
+    padding: 0;
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+}
+
+.content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Modal básico */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    border-radius: 6px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
