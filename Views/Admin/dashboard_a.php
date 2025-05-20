@@ -32,137 +32,11 @@
             min-height: 100vh;
         }
         
-        /* Estilos para la barra lateral */
-        .sidebar {
-            width: 250px;
-            background-color: var(--dark-color);
-            color: white;
-            padding: 20px 0;
-        }
-        
-        .sidebar-menu {
-            list-style: none;
-        }
-        
-        .sidebar-menu li a {
-            display: block;
-            padding: 12px 20px;
-            color: var(--light-color);
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .sidebar-menu li a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        .sidebar-menu li a.active {
-            background-color: var(--primary-color);
-        }
-        
-        .sidebar-menu li a i {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
         
         /* Estilos para el contenido principal */
         .main-content {
             flex: 1;
             padding: 20px;
-        }
-        
-        /* Estilos para el encabezado de sección */
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            color: var(--dark-color);
-        }
-        
-        .section-title i {
-            margin-right: 10px;
-            color: var(--primary-color);
-        }
-        
-        /* Estilos para botones */
-        .btn {
-            padding: 8px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .btn i {
-            margin-right: 5px;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background-color: #2980b9;
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary-color);
-            color: white;
-            margin-left: 10px;
-        }
-        
-        .btn-secondary:hover {
-            background-color: #27ae60;
-        }
-        
-        .btn-danger {
-            background-color: var(--danger-color);
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background-color: #c0392b;
-        }
-        
-        /* Estilos para la tabla de usuarios */
-        .users-table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .users-table th, 
-        .users-table td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .users-table th {
-            background-color: var(--light-color);
-            font-weight: 600;
-        }
-        
-        .users-table tr:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .user-actions {
-            display: flex;
-            gap: 5px;
         }
         
         /* Estilos para el modal */
@@ -237,18 +111,7 @@
     </style>
 </head>
 <body>
-    <div class="dashboard-container">
-        <!-- Barra lateral -->
-        <div class="sidebar">
-            <ul class="sidebar-menu">
-                <li><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#" class="active"><i class="fas fa-users"></i> Usuarios</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
-                <li><a href="#"><i class="fas fa-chart-bar"></i> Reportes</a></li>
-                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
-            </ul>
-        </div>
-        
+    <div class="dashboard-container">    
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Sección de gestión de usuarios -->

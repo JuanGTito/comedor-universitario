@@ -1,0 +1,84 @@
+/* Contenedor principal */
+.asistencia-container {
+    padding: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.asistencia-container h2 {
+    color: #002f9e;
+    margin-bottom: 20px;
+}
+
+/* Formulario */
+.form-busqueda {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.form-busqueda input[type="text"] {
+    padding: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-busqueda button {
+    padding: 10px 20px;
+    background-color: #002f9e;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.form-busqueda button:hover {
+    background-color: #1c45b0;
+}
+
+/* Modal */
+.modal-carnet {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-carnet-content {
+    background-color: #fff;
+    margin: 8% auto;
+    padding: 20px;
+    width: 650px;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+/* Mensaje de error */
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+}

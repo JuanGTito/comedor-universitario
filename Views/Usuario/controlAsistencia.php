@@ -1,56 +1,30 @@
 <?php
 // Usuario/controlAsistencia.php
 
-// Este archivo solo devuelve el contenido para insertar dinámicamente
-// No debe tener <html> ni <body>, solo fragmento HTML
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['busqueda'])) {
-    // Aquí puedes requerir el modelo si quieres manejar la búsqueda aquí (opcional)
-    // Pero para evitar problemas con rutas, lo manejamos solo en carnet_estudiante.php
-
-    // Si quieres validar el valor:
     $busqueda = trim($_POST['busqueda']);
     if ($busqueda === '') {
-        echo "<p style='color:red;'>Debe ingresar un DNI o código válido.</p>";
+        echo "<p class='error'>Debe ingresar un DNI o código válido.</p>";
         exit;
     }
-    // Si quieres, podrías enviar aquí algo, pero en esta estructura
-    // la búsqueda real la hacemos desde JS hacia carnet_estudiante.php
     exit;
 }
 ?>
 
+<link rel="stylesheet" href="../../Assets/css/controlAsistencia.css"/>
 <!-- FORMULARIO DE BÚSQUEDA -->
-<h2>Registro de Asistencia</h2>
-<form id="formBusquedaCarnet" style="margin-bottom:20px;">
-    <input type="text" id="busquedaCarnet" placeholder="DNI o Código" required />
-    <button type="submit">Buscar</button>
-</form>
+<div class="asistencia-container">
+    <h2>Registro de Asistencia</h2>
+    <form id="formBusquedaCarnet" class="form-busqueda">
+        <input type="text" id="busquedaCarnet" placeholder="DNI o Código" required />
+        <button type="submit">Buscar</button>
+    </form>
+</div>
 
-<!-- MODAL OCULTO PARA MOSTRAR DATOS DEL ESTUDIANTE -->
-<div id="modalCarnet" class="modal" style="
-    display:none; 
-    position:fixed; 
-    top:0; left:0; width:100%; height:100%; 
-    background: rgba(0,0,0,0.5); 
-    z-index: 2000;
-">
-    <div style="
-        background:#fff; 
-        margin:10% auto; 
-        padding:20px; 
-        width:400px; 
-        border-radius:5px; 
-        position:relative;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    ">
-        <span onclick="cerrarModalCarnet()" style="
-            position:absolute; 
-            top:10px; right:15px; 
-            cursor:pointer; 
-            font-size:20px;
-            font-weight:bold;
-        ">&times;</span>
+<!-- MODAL DE RESULTADOS -->
+<div id="modalCarnet" class="modal-carnet">
+    <div class="modal-carnet-content">
+        <span class="modal-close" onclick="cerrarModalCarnet()">&times;</span>
         <div id="contenidoCarnet">
             <!-- Aquí se cargan los datos del estudiante -->
         </div>
@@ -88,7 +62,6 @@ function cerrarModalCarnet() {
     document.getElementById('contenidoCarnet').innerHTML = '';
 }
 
-// Cerrar modal si se hace click fuera del contenido
 window.addEventListener('click', function(event) {
     const modal = document.getElementById('modalCarnet');
     if (event.target === modal) {

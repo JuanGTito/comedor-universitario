@@ -10,7 +10,7 @@ class EstudianteModel {
 
     public function __construct() {
         // Endpoint con relaciones embebidas
-        $this->apiUrl = SUPABASE_URL . 'estudiante?select=dni,nombre,apellido,escuela_profesional(carrera),condicion_asignacion(estado)';
+        $this->apiUrl = SUPABASE_URL . 'estudiante?select=id,dni,nombre,apellido,escuela_profesional(carrera),condicion_asignacion(estado)';
         $this->headers = getHeaders();
     }
 
