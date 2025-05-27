@@ -1,37 +1,43 @@
 <?php
 // Models/EstudianteModel.php
-
 require_once __DIR__ . '/../Config/config.php';
-require_once __DIR__ . '/../Config/client.php';
+require_once __DIR__ . '/../Services/SupabaseService.php';
 
 class EstudianteModel {
-    private $apiUrl;
-    private $headers;
+    private string $tablaVista;
 
     public function __construct() {
-        // Endpoint con relaciones embebidas
-        $this->apiUrl = SUPABASE_URL . 'estudiante?select=id,dni,nombre,apellido,escuela_profesional(carrera),condicion_asignacion(estado)';
-        $this->headers = getHeaders();
+        $this->tablaVista = 'vista_estudiantes';
     }
 
-    public function obtenerEstudiantes() {
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $this->apiUrl);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    /**
+     * Obtiene todos los estudiantes desde la vista con sus datos completos y clases visuales por número de faltas.
+     * @return array
+     */
+    public function obtenerEstudiantes(): array {
+        $estudiantes = SupabaseService::select("{$this->tablaVista}?select=*");
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+        foreach ($estudiantes as &$est) {
+            $faltas = $est['total_faltas'] ?? 0;
 
-        if ($response === false) {
-            return [];
+            $est['btnClass'] = match (true) {
+                $faltas >= 5 => 'btn-danger',
+                $faltas >= 2 => 'btn-warning',
+                default      => 'btn-success',
+            };
         }
 
-        return json_decode($response, true);
+        return $estudiantes;
     }
 
-    public function buscarPorDniOCodigo($busqueda) {
-        $filtro = "?or=(dni.eq.$busqueda,id.eq.$busqueda)&select=*,escuela_profesional(*),condicion_asignacion(*)";
-        return supabaseRequest("estudiante$filtro");
-    }
+    /**
+ * Busca estudiante por DNI o código.
+ * @param string $busqueda
+ * @return array
+ */
+public function buscarPorDniOCodigo(string $busqueda): array {
+    $busqueda = urlencode($busqueda);
+    $filtro = "?or=(dni.eq.$busqueda,id.eq.$busqueda)&select=*";
+    return SupabaseService::select("vista_estudiantes$filtro");
+}
 }

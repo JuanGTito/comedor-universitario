@@ -4,10 +4,10 @@
 
 /* Variables de colores */
 :root {
-    --sidebar-bg: #002f9e;
+    --sidebar-bg: #052795;
     --sidebar-bg-hover: #1c45b0;
-    --sidebar-text: #fff;
-    --sidebar-text-light: #cfd8ff;
+    --sidebar-text: #ffffff;
+    --sidebar-text-light: #f8f8f8;
     --sidebar-primary: #0056d2;
 }
 
@@ -86,7 +86,6 @@ body {
 
 /* Contenido del iframe */
 .content {
-    padding: 0;
     flex: 1;
     background-color: #fff;
     display: flex;
@@ -94,7 +93,7 @@ body {
 
 .content iframe {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     border: none;
 }
 

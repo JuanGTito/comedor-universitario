@@ -1,6 +1,6 @@
 /* Variables de color */
 :root {
-    --primary-color: #0056d2;
+    --primary-color: #052795;
     --primary-hover: #2980b9;
     --secondary-color: #27ae60;
     --secondary-hover: #219150;
@@ -10,6 +10,10 @@
     --dark-color: #2c3e50;
 }
 
+/* Estilos generales */
+.dashboard-estudiantes {
+    padding: 2rem;
+}
 /* Encabezado de sección */
 .section-header {
     display: flex;

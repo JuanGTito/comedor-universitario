@@ -18,7 +18,6 @@ $rol = $_SESSION['user_rol'] ?? 'usuario';
     <title>Dashboard General</title>
     <link rel="stylesheet" href="../Assets/css/dashboard.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
 
@@ -26,19 +25,20 @@ $rol = $_SESSION['user_rol'] ?? 'usuario';
 
 <div class="main-content">
     <div class="content">
-        <iframe id="iframeContent" src=""></iframe>
+        <iframe id="iframeContent" src="" style="width: 100%; height: 100vh; border: none;"></iframe>
     </div>
 </div>
 
+<!-- Precarga oculta de Estudiantes -->
+<iframe id="preloadEstudiantes" src="Admin/estudiantes.php" style="display:none;"></iframe>
 
 <script>
     const userRole = '<?php echo $rol; ?>';
 
-    // Función para cargar páginas completas en iframe
     function loadPageComplete(url) {
         document.getElementById('iframeContent').src = url;
     }
-    // Cerrar modal si se hace click fuera del contenido
+
     window.addEventListener('click', function(event) {
         if (event.target.classList.contains('modal')) {
             event.target.style.display = 'none';
@@ -46,7 +46,10 @@ $rol = $_SESSION['user_rol'] ?? 'usuario';
     });
 
     document.addEventListener('DOMContentLoaded', function () {
-        // Carga contenido inicial según rol usando iframe
+        // Precargar vista de estudiantes para que esté lista cuando se necesite
+        const preloadIframe = document.getElementById('preloadEstudiantes');
+
+        // Cargar página inicial en el iframe principal
         if (userRole === 'admin') {
             loadPageComplete('Admin/graficos.php');
         } else {
@@ -55,17 +58,17 @@ $rol = $_SESSION['user_rol'] ?? 'usuario';
     });
 
     document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const page = btn.getAttribute('data-page');
-        if (page) {
-            loadPageComplete(page);
-            // Opcional: estilos para botón activo
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+        btn.addEventListener('click', () => {
+            const page = btn.getAttribute('data-page');
+            if (page) {
+                loadPageComplete(page);
+
+                // Estilo activo
+                document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
             }
         });
     });
-    
 </script>
 
 </body>

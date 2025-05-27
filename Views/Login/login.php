@@ -22,8 +22,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            background-color: #004080;
+            padding: 10px 20px;
+            background-color: #052795;
             color: white;
             flex-shrink: 0;
         }
@@ -45,6 +45,9 @@
         header button:hover {
             background-color: #0056b3;
         }
+        .logo img {
+            height: 40px;
+        }
         main {
             flex-grow: 1;
             display: flex;
@@ -62,7 +65,7 @@
         }
         .login-form h2 {
             margin-bottom: 20px;
-            color: #004080;
+            color: #052795;
             text-align: center;
         }
         .login-form label {
@@ -89,7 +92,7 @@
         .login-form button {
             width: 100%;
             padding: 12px;
-            background-color: #004080;
+            background-color: #052795;
             color: white;
             font-weight: bold;
             font-size: 16px;
@@ -99,10 +102,10 @@
             transition: background-color 0.3s;
         }
         .login-form button:hover {
-            background-color: #002d5c;
+            background-color:rgb(77, 110, 218);
         }
         footer {
-            background-color: #222;
+            background-color: #052795;
             color: #ccc;
             text-align: center;
             padding: 15px 10px;
@@ -114,12 +117,14 @@
 <body>
 
 <header>
-    <div class="logo">UNAJ</div>
+    <div class="logo">
+        <img src="../../images/logo.jpg" alt="Logo UNAJ" />
+    </div>
     <button onclick="location.href='../../index.php'">Inicio</button>
 </header>
 
 <main>
-    <form class="login-form" method="POST" action="../../Models/procesarLogin.php">
+    <form class="login-form" method="POST" action="../../Models/authlogin/procesarLogin.php">
         <h2>Iniciar Sesión</h2>
         <label for="usuario">Usuario</label>
         <input type="text" id="usuario" name="usuario" required autocomplete="username" />

@@ -11,7 +11,7 @@
         html, body {
             height: 100%;
             font-family: Arial, sans-serif;
-            overflow: hidden; /* Evitar scroll */
+            overflow: hidden;
         }
         body {
             display: flex;
@@ -22,15 +22,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 30px;
-            background-color: #004080;
+            padding: 10px 20px;
+            background-color: #052795;
             color: white;
             z-index: 10;
             flex-shrink: 0;
         }
-        header .logo {
-            font-size: 24px;
-            font-weight: bold;
+        .logo img {
+            height: 40px;
         }
         header button {
             background-color: #007BFF;
@@ -46,9 +45,9 @@
             background-color: #0056b3;
         }
         main {
-            position: relative;
             flex-grow: 1;
             overflow: hidden;
+            position: relative;
         }
         .slider {
             width: 100%;
@@ -59,21 +58,43 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 80%;
+            max-height: 80%;
+            border-radius: 2%;
             transform: translate(-50%, -50%);
             object-fit: contain;
             opacity: 0;
             transition: opacity 1s ease-in-out;
-            width: auto;
-            height: auto;
+            z-index: 1;
         }
         .slider img.active {
             opacity: 1;
-            z-index: 1;
+        }
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 50px;
+            color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+            border-radius: 15%;
+            z-index: 2;
+        }
+        .arrow:hover {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .arrow.left {
+            left: 25%;
+        }
+        .arrow.right {
+            right: 25%;
         }
         footer {
-            background-color: #222;
+            background-color: #052795;
             color: #ccc;
             text-align: center;
             padding: 15px 10px;
@@ -85,12 +106,17 @@
 <body>
 
 <header>
-    <div class="logo">UNAJ</div>
+    <div class="logo">
+        <img src="images/logo.jpg" alt="Logo UNAJ" />
+    </div>
     <button onclick="location.href='Views/Login/login.php'">Login</button>
 </header>
 
 <main>
     <div class="slider">
+        <span class="arrow left" onclick="prevSlide()">&#10094;</span>
+        <span class="arrow right" onclick="nextSlide()">&#10095;</span>
+
         <img src="images/slide1.jpg" alt="Imagen 1" class="active" />
         <img src="images/slide2.jpg" alt="Imagen 2" />
         <img src="images/slide3.jpg" alt="Imagen 3" />
@@ -98,7 +124,7 @@
 </main>
 
 <footer>
-    &copy; <?= date('Y') ?> Universidad Nacional De Juliaca. Todos los derechos reservados.
+    &copy; <?= date('Y') ?> Bienestar Universitario - UNAJ. Todos los derechos reservados.
 </footer>
 
 <script>
@@ -111,10 +137,17 @@
         });
     }
 
-    setInterval(() => {
+    function nextSlide() {
         currentIndex = (currentIndex + 1) % slides.length;
         showSlide(currentIndex);
-    }, 10000); // 10 segundos
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlide(currentIndex);
+    }
+
+    setInterval(nextSlide, 10000); // Cambio automático cada 10 segundos
 </script>
 
 </body>
